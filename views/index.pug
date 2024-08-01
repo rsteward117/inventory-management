@@ -1,0 +1,12 @@
+extends layout
+
+block content
+
+  h1 Guitar Inventory App
+
+  h1(class='header') Guitar Type Categories
+  if guitar_type_list.length
+    each type in guitar_type_list
+      div(class='guitar-type-container')
+        h2 
+          a(href=type.url) #{type.name}

@@ -1,0 +1,18 @@
+extends layout
+
+block content
+
+  h1(class='header') #{brand.brand_name} Guitars
+
+  div(style='margin-left:20px;margin-top:20px')
+
+    if brand_guitar.length
+      dl
+        each guitar in brand_guitar
+          dt
+            a(href=guitar.url) #{guitar.guitar_name}
+          dd #{guitar.description}
+
+
+    else
+      p This brand type has no guitars.

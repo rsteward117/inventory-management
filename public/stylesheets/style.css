@@ -1,0 +1,22 @@
+.sidebar-nav {
+  margin-top: 20px;
+  padding: 0;
+  list-style: none;
+  border-right: 5px solid black;
+  border-bottom: 5px solid black;
+  font-size: large;
+  font-weight: 500;
+}
+
+h1{
+  text-align: center;
+  margin-bottom: 5%;
+}
+
+.header{
+  border-bottom: 5px solid black;
+}
+.guitar-type-container{
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,32 @@
+extends layout
+
+block content
+
+  h1(class='header') #{guitar.guitar_name}
+
+  div(style='margin-left:20px;margin-top:20px')
+
+    h3 #[ Brand:] 
+        a(href=guitar.brand.url) #{guitar.brand.brand_name} 
+    h3 #[ Description:] #{guitar.description}
+    h3 #[ Price:] $#{guitar.price}
+    h3 #[ Guitar Type: ] 
+      each val, index in guitar.guitar_type
+        a(href=val.url) #{val.name}
+        if index < guitar.guitar_type.length - 1
+          |,&nbsp;
+    
+  div(style='margin-left:20px;margin-top:20px')
+    h2(style='font-size: 1.5rem;') Copies
+
+    each val in guitar_instance
+        hr
+        if val.status=='Available'
+            p.text-success #{val.status}
+        else if val.status=='Out of Stock'
+            p.text.danger #{val.status}
+
+    else 
+        p There are no instances of this guitar. Would you like to create one.
+        a(href='/inventory/guitarinstance/create') create a guitar instance
+            

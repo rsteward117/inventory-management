@@ -1,0 +1,53 @@
+extends layout
+
+block content
+  h1= title
+
+  form(method='POST')
+    div.form-group
+        label(for="guitar_name") guitar name:
+        input#guitar_name.form-control(type="text", placeholder="name of guitar" name="guitar_name" required value=(undefined===guitar ? '' : guitar.guitar_name) )
+    div.form-group
+        label(for="guitar_type") guitar type:  
+        select#guitar_type.form-control(name="guitar_type" required)
+            option(value='') --please select a guitar type
+            for type in types
+                if guitar 
+                    if type._id.toString()===guitar.type._id.toString()
+                        option(value=type._id selected) #{type.name}
+                    else 
+                        option(value=type._id ) #{type.name}
+                else 
+                    option(value=type._id selected) #{type.name}
+    div.form-group
+        label(for="brand") brand: 
+        select#brand.form-control(name="brand" required)
+            option(value='') --please select a brand 
+            for brand in brands
+                if guitar
+                    if brand._id.toString()===guitar.brand._id.toString()
+                        option(value=brand._id selected) #{brand.brand_name}
+                    else
+                        option(value=brand._id ) #{brand.brand_name}
+                else 
+                    option(value=brand._id) #{brand.brand_name}
+    div.form-group
+        label(for="price") guitar price:
+        input#price.form-control(type="number", placeholder="100" name="price" required value=(undefined===guitar ? '' : guitar.price) )
+    div.form-group
+        label(for="description") description: 
+        textarea#description(name="description", placeholder="description" required)=  undefined===guitar ? '' : guitar.description
+        button(type="submit") submit 
+    if errors 
+        ul 
+            for error in errors 
+                li!= error.msg
+
+
+                        
+
+
+
+               
+
+    

@@ -1,0 +1,16 @@
+extends layout
+
+block content
+
+  h1(class='header') #{type.name} Guitars
+
+  div(style='margin-left:20px;margin-top:20px')
+
+    if type_guitar.length
+      dl
+        each guitar in type_guitar
+          dt
+            a(href=guitar.url) #{guitar.guitar_name}
+          dd #{guitar.description}
+    else
+      p This guitar type has no guitars.
